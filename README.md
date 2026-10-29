@@ -1,4 +1,4 @@
-# Calion: test labiryntu 5×8
+# Calion: test labiryntu 7×10
 
 Oddzielna publikacja eksperymentalnej mapy Calionu. Publiczna wersja [Karcianki](https://the-rozu.github.io/Karcianka/) pozostaje niezależna.
 
@@ -14,7 +14,11 @@ Workflow na gałęzi `dev-mode` pobiera komplet plików źródłowych (wraz z gr
 
 W trybie poziomym mapa zajmuje lewą część ekranu, a statystyki i opis bossa są w panelu po prawej. Rozmiary kafelków dopasowują się do wysokości telefonu. Można przewijać labirynt pionowo.
 
-## Sterowanie mapą (wersja testowa 4)
+## Rozklad pol 7×10
+
+70 pol lacznie: 1 start, 1 boss, maksymalnie 10 zwyklych przeciwnikow, 4 elity, 2 sklepy, 3 skrzynie, 2 leczenia, 3 wydarzenia i 44 puste korytarze. Kazde leczenie znajduje sie w slepym zaulku z jednym wejsciem przez zwyklego przeciwnika. Wydarzenia nie dodaja nowych walk ponad limit.
+
+## Sterowanie mapą (wersja testowa 5)
 
 - Pola mapy są powiększone, a planszę można przewijać w pionie.
 - Kliknij sąsiedni, nieodkryty pokój, żeby przejść do niego z animacją.
