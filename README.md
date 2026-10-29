@@ -14,7 +14,7 @@ Workflow na gałęzi `dev-mode` pobiera komplet plików źródłowych (wraz z gr
 
 W trybie poziomym mapa zajmuje lewą część ekranu, a statystyki i opis bossa są w panelu po prawej. Rozmiary kafelków dopasowują się do wysokości telefonu. Można przewijać labirynt pionowo.
 
-## Sterowanie mapą (wersja testowa 3)
+## Sterowanie mapą (wersja testowa 4)
 
 - Pola mapy są powiększone, a planszę można przewijać w pionie.
 - Kliknij sąsiedni, nieodkryty pokój, żeby przejść do niego z animacją.
@@ -29,4 +29,4 @@ W trybie poziomym mapa zajmuje lewą część ekranu, a statystyki i opis bossa 
 3. Otwórz **Actions → Publikacja labiryntu Calion → Run workflow**, wybierz gałąź `dev-mode` i uruchom.
 4. Po zakończeniu wdrożenia otwórz adres powyżej.
 
-Po zmianach w źródłowej gałęzi eksperymentalnej uruchom workflow ponownie. Zmiany w gałęzi `dev-mode` tego repozytorium uruchamiają go automatycznie.
+Po zmianach w źródłowej gałęzi eksperymentalnej uruchom workflow ponownie. Zmiany w gałęzi `dev-mode` tego repozytorium uruchamiają go automatycznie. Przy kolejnej publikacji uruchom **nowy workflow** (Run workflow), zamiast używać Re-run jobs, ponieważ ponowne użycie starego uruchomienia może zdublować artefakt `github-pages`.
