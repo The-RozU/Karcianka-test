@@ -14,6 +14,14 @@ Workflow na gałęzi `dev-mode` pobiera komplet plików źródłowych (wraz z gr
 
 W trybie poziomym mapa zajmuje lewą część ekranu, a statystyki i opis bossa są w panelu po prawej. Rozmiary kafelków dopasowują się do wysokości telefonu. Można przewijać labirynt pionowo.
 
+## Sterowanie mapą (wersja testowa 3)
+
+- Pola mapy są powiększone, a planszę można przewijać w pionie.
+- Kliknij sąsiedni, nieodkryty pokój, żeby przejść do niego z animacją.
+- Kliknij dowolny wcześniej odwiedzony pokój, aby postać wróciła po najkrótszej trasie prowadzącej wyłącznie przez odwiedzone pola.
+- Pomieszczenia mijane po drodze nie wywołują ponownie wydarzeń ani walk.
+- W podsumowaniu walki przycisk powrotu na mapę jest główny, a wyjście do lobby jest mniejsze i czerwone.
+
 ## Pierwsze uruchomienie GitHub Pages
 
 1. W tym repozytorium otwórz **Settings → Pages**.
