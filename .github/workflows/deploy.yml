@@ -1,0 +1,42 @@
+name: Publikacja labiryntu Calion
+
+on:
+  push:
+    branches: [dev-mode]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: calion-labirynt-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pobierz eksperymentalna wersje gry
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 "https://github.com/The-RozU/Karcianka/archive/refs/heads/experiment/labirynt-5x8.zip" -o /tmp/labirynt.zip
+          unzip -q /tmp/labirynt.zip -d /tmp/labirynt-src
+          mkdir -p public
+          cp -a /tmp/labirynt-src/Karcianka-experiment-labirynt-5x8/. public/
+          touch public/.nojekyll
+          test -f public/index.html
+          test -f public/maze-generator.js
+      - name: Skonfiguruj GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Przygotuj pliki do publikacji
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - name: Opublikuj gre
+        id: deployment
+        uses: actions/deploy-pages@v4
