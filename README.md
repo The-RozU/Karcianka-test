@@ -10,6 +10,10 @@ Docelowy adres: https://the-rozu.github.io/Karcianka-labirynt/
 
 Workflow na gałęzi `dev-mode` pobiera komplet plików źródłowych (wraz z grafikami) i publikuje je przez GitHub Pages. Nie zmienia oryginalnego repozytorium.
 
+## Układ mobilny
+
+W trybie poziomym mapa zajmuje lewą część ekranu, a statystyki i opis bossa są w panelu po prawej. Rozmiary kafelków dopasowują się do wysokości telefonu. Można przewijać labirynt pionowo.
+
 ## Pierwsze uruchomienie GitHub Pages
 
 1. W tym repozytorium otwórz **Settings → Pages**.
