@@ -2,6 +2,10 @@
 
 Oddzielna publikacja eksperymentalnej mapy Calionu. Publiczna wersja [Karcianki](https://the-rozu.github.io/Karcianka/) pozostaje niezależna.
 
+## Aktualizacja podglądu dev-mode
+
+- 2026-10-30: sąsiednie szare pola pokazują ikonę wydarzenia, po odejściu ikonę ukrywają. Ściany pozostają ukryte do odwiedzenia pola.
+
 ## Dwa osobne podglądy
 
 - Eksperyment 7×10: https://the-rozu.github.io/Karcianka-labirynt/ (źródło: gałąź experiment/labirynt-5x8).
