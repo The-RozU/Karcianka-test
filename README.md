@@ -2,6 +2,13 @@
 
 Oddzielna publikacja eksperymentalnej mapy Calionu. Publiczna wersja [Karcianki](https://the-rozu.github.io/Karcianka/) pozostaje niezależna.
 
+## Dwa osobne podglądy
+
+- Eksperyment 7×10: https://the-rozu.github.io/Karcianka-labirynt/ (źródło: gałąź experiment/labirynt-5x8).
+- Zintegrowana główna wersja rozwojowa: https://the-rozu.github.io/Karcianka-labirynt/dev/ (źródło: gałąź dev-mode).
+
+Workflow publikuje je jednocześnie w osobnych folderach, nie zmieniając oryginalnego publicznego adresu gry https://the-rozu.github.io/Karcianka/. Po aktualizacji dev-mode należy ponownie uruchomić workflow lub wywołać nowy push na tej gałęzi repozytorium testowego.
+
 ## Uruchamianie
 
 Docelowy adres: https://the-rozu.github.io/Karcianka-labirynt/
