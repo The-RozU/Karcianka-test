@@ -18,9 +18,11 @@ W trybie poziomym mapa zajmuje lewą część ekranu, a statystyki i opis bossa 
 
 70 pol lacznie: 1 start, 1 boss, maksymalnie 10 zwyklych przeciwnikow, 4 elity, 2 sklepy, 3 skrzynie, 2 leczenia, 3 wydarzenia i 44 puste korytarze. Kazde leczenie znajduje sie w slepym zaulku z jednym wejsciem przez zwyklego przeciwnika. Wydarzenia nie dodaja nowych walk ponad limit.
 
-## Sterowanie mapą (wersja testowa 7)
+## Sterowanie mapą (wersja testowa 8)
 
 - Cała szerokość 7 pól jest widoczna jednocześnie, a mapa przewija się wyłącznie pionowo.
+- Szare, niezbadane przejścia pozostają widoczne po odejściu gracza, bez ikon i ścian.
+- Ściany danego pola ujawniają się dopiero po wejściu na to pole.
 - Ściany nieodkrytych pomieszczeń są ukryte. Odsłaniają się przy postaci i pozostają widoczne w odwiedzonych polach.
 - Odkryte ściany są grubsze i bardziej kontrastowe.
 - Po ukończeniu walki, skrzyni, leczenia, sklepu lub wydarzenia oryginalna ikona pozostaje na zielonym polu.
