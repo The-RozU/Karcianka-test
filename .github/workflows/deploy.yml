@@ -42,6 +42,9 @@ jobs:
           test -f public/dev/maze-generator.js
           test -f public/dev/tests/maze.test.js
           test ! -f public/dev/map-generator.js
+          grep -Fq 'game.js?v=20261030-balance2' public/dev/index.html
+          grep -Fq "poker: { name: 'Poker', baseChips: 100, mult: 4.5 }" public/dev/game.js
+          grep -Fq "pair: { name: 'Para', baseChips: 10, mult: 1.5 }" public/dev/game.js
       - name: Skonfiguruj GitHub Pages
         uses: actions/configure-pages@v5
       - name: Przygotuj pliki do publikacji
