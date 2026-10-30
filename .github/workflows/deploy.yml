@@ -1,4 +1,4 @@
-name: Publikacja labiryntu Calion
+name: Publikacja Karcianka-test
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: calion-labirynt-pages
+  group: karcianka-test-pages
   cancel-in-progress: true
 
 jobs:
@@ -51,6 +51,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
-      - name: Opublikuj gre
+      - name: Opublikuj gre testowa
         id: deployment
         uses: actions/deploy-pages@v4
