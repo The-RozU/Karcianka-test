@@ -2,6 +2,13 @@
 
 Oddzielne repozytorium testowe Karcianki: publikacja eksperymentalnej mapy Calionu i zintegrowanej wersji dev-mode. Publiczna wersja [Karcianki](https://the-rozu.github.io/Karcianka/) pozostaje niezależna.
 
+## Kalon 0.4.0 · poprawa układu walki
+
+- Zintegrowana gra w podglądzie `/dev/` nosi nazwę **Kalon** i pokazuje wersję **0.4.0** w tytule karty, lobby oraz nagłówku.
+- Lewy panel walki został powiększony w poziomym układzie ekranu. Podgląd tarczy i obrażeń jest w pełni widoczny, a przy małej wysokości można przewinąć cały panel.
+- Cache busting obejmuje zarówno `style.css?v=0.4.0`, jak i `game.js?v=0.4.0`.
+- Publiczna gałąź `main` głównego repozytorium pozostaje nietknięta.
+
 ## Aktualizacja tabeli punktacji
 
 - 2026-10-30: poprawiono również statyczną tabelę w index.html. Wcześniej obrażenia używały nowych mnożników, ale opis wyświetlał stare wartości. Teraz wszystkie dziewięć wierszy odpowiada regułom walki.
