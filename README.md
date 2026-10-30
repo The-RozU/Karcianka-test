@@ -1,6 +1,6 @@
-# Calion: test labiryntu 7×10
+# Calion: Karcianka-test
 
-Oddzielna publikacja eksperymentalnej mapy Calionu. Publiczna wersja [Karcianki](https://the-rozu.github.io/Karcianka/) pozostaje niezależna.
+Oddzielne repozytorium testowe Karcianki: publikacja eksperymentalnej mapy Calionu i zintegrowanej wersji dev-mode. Publiczna wersja [Karcianki](https://the-rozu.github.io/Karcianka/) pozostaje niezależna.
 
 ## Aktualizacja tabeli punktacji
 
@@ -16,14 +16,14 @@ Oddzielna publikacja eksperymentalnej mapy Calionu. Publiczna wersja [Karcianki]
 
 ## Dwa osobne podglądy
 
-- Eksperyment 7×10: https://the-rozu.github.io/Karcianka-labirynt/ (źródło: gałąź experiment/labirynt-5x8).
-- Zintegrowana główna wersja rozwojowa: https://the-rozu.github.io/Karcianka-labirynt/dev/ (źródło: gałąź dev-mode).
+- Eksperyment 7×10: https://the-rozu.github.io/Karcianka-test/ (źródło: gałąź experiment/labirynt-5x8).
+- Zintegrowana główna wersja rozwojowa: https://the-rozu.github.io/Karcianka-test/dev/ (źródło: gałąź dev-mode).
 
 Workflow publikuje je jednocześnie w osobnych folderach, nie zmieniając oryginalnego publicznego adresu gry https://the-rozu.github.io/Karcianka/. Po aktualizacji dev-mode należy ponownie uruchomić workflow lub wywołać nowy push na tej gałęzi repozytorium testowego.
 
 ## Uruchamianie
 
-Docelowy adres: https://the-rozu.github.io/Karcianka-labirynt/
+Docelowy adres: https://the-rozu.github.io/Karcianka-test/
 
 Źródło gry: [The-RozU/Karcianka, gałąź experiment/labirynt-5x8](https://github.com/The-RozU/Karcianka/tree/experiment/labirynt-5x8).
 
@@ -40,7 +40,7 @@ W trybie poziomym mapa zajmuje lewą część ekranu, a statystyki i opis bossa 
 ## Sterowanie mapą (wersja testowa 8)
 
 - Cała szerokość 7 pól jest widoczna jednocześnie, a mapa przewija się wyłącznie pionowo.
-- Szare, niezbadane przejścia pozostają widoczne po odejściu gracza, bez ikon i ścian.
+- Sąsiednie szare pola pokazują ikony, a po odejściu gracza pozostają widoczne bez ikon i ścian.
 - Ściany danego pola ujawniają się dopiero po wejściu na to pole.
 - Ściany nieodkrytych pomieszczeń są ukryte. Odsłaniają się przy postaci i pozostają widoczne w odwiedzonych polach.
 - Odkryte ściany są grubsze i bardziej kontrastowe.
@@ -56,7 +56,7 @@ W trybie poziomym mapa zajmuje lewą część ekranu, a statystyki i opis bossa 
 
 1. W tym repozytorium otwórz **Settings → Pages**.
 2. W sekcji **Build and deployment → Source** wybierz **GitHub Actions**.
-3. Otwórz **Actions → Publikacja labiryntu Calion → Run workflow**, wybierz gałąź `dev-mode` i uruchom.
+3. Otwórz **Actions → Publikacja Karcianka-test → Run workflow**, wybierz gałąź `dev-mode` i uruchom.
 4. Po zakończeniu wdrożenia otwórz adres powyżej.
 
 Po zmianach w źródłowej gałęzi eksperymentalnej uruchom workflow ponownie. Zmiany w gałęzi `dev-mode` tego repozytorium uruchamiają go automatycznie. Przy kolejnej publikacji uruchom **nowy workflow** (Run workflow), zamiast używać Re-run jobs, ponieważ ponowne użycie starego uruchomienia może zdublować artefakt `github-pages`.
