@@ -2,12 +2,21 @@
 
 Oddzielne repozytorium testowe Karcianki: publikacja eksperymentalnej mapy Calionu i zintegrowanej wersji dev-mode. Publiczna wersja [Karcianki](https://the-rozu.github.io/Karcianka/) pozostaje niezależna.
 
+## Kalon 0.4.1 · poprawki labiryntu (również w main)
+
+- 👑 Ikona bossa pozostaje widoczna na mapie niezależnie od mgły wojny. Nie odkrywa ścian.
+- 🪙 Do już odwiedzonego sklepu można wrócić, a oferta i wykupione pozycje nie resetują się.
+- 📦 Skrzynia przyznaje monety **albo jeden przedmiot jednorazowy**, nigdy obie nagrody. Przy pełnym plecaku daje monety.
+- Generator ponownie losuje rzadki niepoprawny układ ślepych zaułków.
+- Oba skrypty gry i generatora odświeżają się przez `?v=0.4.1`.
+- Oficjalna publikacja: https://the-rozu.github.io/Karcianka/
+
 ## Kalon 0.4.0 · poprawa układu walki
 
 - Zintegrowana gra w podglądzie `/dev/` nosi nazwę **Kalon** i pokazuje wersję **0.4.0** w tytule karty, lobby oraz nagłówku.
 - Lewy panel walki został powiększony w poziomym układzie ekranu. Podgląd tarczy i obrażeń jest w pełni widoczny, a przy małej wysokości można przewinąć cały panel.
 - Cache busting obejmuje zarówno `style.css?v=0.4.0`, jak i `game.js?v=0.4.0`.
-- Publiczna gałąź `main` głównego repozytorium pozostaje nietknięta.
+- Ten opis dotyczył wydania 0.4.0. Poprawki 0.4.1 zostały później przeniesione także do publicznej gałęzi `main`.
 
 ## Aktualizacja tabeli punktacji
 
