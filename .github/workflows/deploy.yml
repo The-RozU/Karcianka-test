@@ -43,9 +43,10 @@ jobs:
           test -f public/dev/tests/maze.test.js
           test ! -f public/dev/map-generator.js
           grep -Fq '<title>Kalon' public/dev/index.html
-          grep -Fq 'v0.4.0' public/dev/index.html
-          grep -Fq 'style.css?v=0.4.0' public/dev/index.html
-          grep -Fq 'game.js?v=0.4.0' public/dev/index.html
+          grep -Fq 'v0.4.1' public/dev/index.html
+          grep -Fq 'style.css?v=0.4.1' public/dev/index.html
+          grep -Fq 'game.js?v=0.4.1' public/dev/index.html
+          grep -Fq 'maze-generator.js?v=0.4.1' public/dev/index.html
           grep -Fq 'height: min(41%, 305px)' public/dev/style.css
           grep -Fq 'overflow-y: auto;' public/dev/style.css
           grep -Fq "poker: { name: 'Poker', baseChips: 100, mult: 4.5 }" public/dev/game.js
