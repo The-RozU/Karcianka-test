@@ -2,6 +2,10 @@
 
 Oddzielna publikacja eksperymentalnej mapy Calionu. Publiczna wersja [Karcianki](https://the-rozu.github.io/Karcianka/) pozostaje niezależna.
 
+## Aktualizacja tabeli punktacji
+
+- 2026-10-30: poprawiono również statyczną tabelę w index.html. Wcześniej obrażenia używały nowych mnożników, ale opis wyświetlał stare wartości. Teraz wszystkie dziewięć wierszy odpowiada regułom walki.
+
 ## Aktualizacja balansu
 
 - 2026-10-30: mnożniki układów od Wysokiej karty ×1 do Pokera ×4,5, co 0,5 (Para i Dwie Pary ×1,5). Tabela punktacji i obrażenia korzystają z tych samych reguł.
