@@ -1,4 +1,4 @@
-name: Publikacja Karcianka-test
+name: Publikacja Kalon - wersja testowa
 
 on:
   push:
@@ -16,47 +16,53 @@ concurrency:
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - name: Pobierz eksperymentalna wersje gry
+      - name: Pobierz najnowsze Kalon dev-mode
         run: |
           set -euo pipefail
-          curl -fL --retry 3 "https://github.com/The-RozU/Karcianka/archive/refs/heads/experiment/labirynt-5x8.zip" -o /tmp/labirynt.zip
-          unzip -q /tmp/labirynt.zip -d /tmp/labirynt-src
-          mkdir -p public
-          cp -a /tmp/labirynt-src/Karcianka-experiment-labirynt-5x8/. public/
+          SOURCE_SHA="$(git ls-remote https://github.com/The-RozU/Karcianka.git refs/heads/dev-mode | cut -f1)"
+          test -n "${SOURCE_SHA}"
+          curl -fL --retry 3 "https://github.com/The-RozU/Karcianka/archive/${SOURCE_SHA}.zip" -o /tmp/kalon-dev.zip
+          mkdir -p /tmp/kalon-dev public public/dev
+          unzip -q /tmp/kalon-dev.zip -d /tmp/kalon-dev
+          SOURCE_DIR="$(find /tmp/kalon-dev -mindepth 1 -maxdepth 1 -type d -print -quit)"
+          test -n "${SOURCE_DIR}"
+          cp -a "${SOURCE_DIR}/." public/
+          cp -a "${SOURCE_DIR}/." public/dev/
           touch public/.nojekyll
+          printf '%s\n' "${SOURCE_SHA}" > public/dev-source-sha.txt
+
           test -f public/index.html
+          test -f public/dev/index.html
           test -f public/maze-generator.js
-      - name: Pobierz zintegrowana wersje dev-mode do osobnego podgladu
+          test -f public/game.js
+          cmp public/index.html public/dev/index.html
+          VERSION="$(sed -n 's@.*<title>Kalon.*v\(0\.[0-9]*\.[0-9]*\)</title>.*@\1@p' public/index.html | head -n 1)"
+          test -n "${VERSION}"
+          grep -Fq "style.css?v=${VERSION}" public/index.html
+          grep -Fq "game.js?v=${VERSION}" public/index.html
+          grep -Fq "maze-generator.js?v=${VERSION}" public/index.html
+          echo "Przygotowano Kalon v${VERSION}, commit ${SOURCE_SHA}"
+      - name: Zachowaj eksperyment labiryntu pod /experiment/
         run: |
           set -euo pipefail
-          curl -fL --retry 3 "https://github.com/The-RozU/Karcianka/archive/refs/heads/dev-mode.zip" -o /tmp/dev-mode.zip
-          unzip -q /tmp/dev-mode.zip -d /tmp/dev-mode-src
-          mkdir -p public/dev
-          cp -a /tmp/dev-mode-src/Karcianka-dev-mode/. public/dev/
-          test -f public/dev/index.html
-          test -f public/dev/maze-generator.js
-          test -f public/dev/tests/maze.test.js
-          test ! -f public/dev/map-generator.js
-          grep -Fq '<title>Kalon' public/dev/index.html
-          grep -Fq 'v0.4.1' public/dev/index.html
-          grep -Fq 'style.css?v=0.4.1' public/dev/index.html
-          grep -Fq 'game.js?v=0.4.1' public/dev/index.html
-          grep -Fq 'maze-generator.js?v=0.4.1' public/dev/index.html
-          grep -Fq 'height: min(41%, 305px)' public/dev/style.css
-          grep -Fq 'overflow-y: auto;' public/dev/style.css
-          grep -Fq "poker: { name: 'Poker', baseChips: 100, mult: 4.5 }" public/dev/game.js
-          grep -Fq "pair: { name: 'Para', baseChips: 10, mult: 1.5 }" public/dev/game.js
+          curl -fL --retry 3 "https://github.com/The-RozU/Karcianka/archive/refs/heads/experiment/labirynt-5x8.zip" -o /tmp/kalon-experiment.zip
+          mkdir -p /tmp/kalon-experiment public/experiment
+          unzip -q /tmp/kalon-experiment.zip -d /tmp/kalon-experiment
+          SOURCE_DIR="$(find /tmp/kalon-experiment -mindepth 1 -maxdepth 1 -type d -print -quit)"
+          test -n "${SOURCE_DIR}"
+          cp -a "${SOURCE_DIR}/." public/experiment/
+          test -f public/experiment/index.html
       - name: Skonfiguruj GitHub Pages
         uses: actions/configure-pages@v5
       - name: Przygotuj pliki do publikacji
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
-      - name: Opublikuj gre testowa
+      - name: Opublikuj wersję testową
         id: deployment
         uses: actions/deploy-pages@v4
