@@ -1,78 +1,28 @@
-# Calion: Karcianka-test
+# Kalon: testowa wersja gry
 
-Oddzielne repozytorium testowe Karcianki: publikacja eksperymentalnej mapy Calionu i zintegrowanej wersji dev-mode. Publiczna wersja [Karcianki](https://the-rozu.github.io/Karcianka/) pozostaje niezależna.
+Wersja testowa Kalona jest zawsze budowana z gałęzi [Karcianka/dev-mode](https://github.com/The-RozU/Karcianka/tree/dev-mode). Stabilna wersja [Karcianka/main](https://github.com/The-RozU/Karcianka/tree/main) pozostaje niezależna i nie jest modyfikowana przez publikację testową.
 
-## Kalon 0.4.1 · poprawki labiryntu (również w main)
+## Linki do gry
 
-- 👑 Ikona bossa pozostaje widoczna na mapie niezależnie od mgły wojny. Nie odkrywa ścian.
-- 🪙 Do już odwiedzonego sklepu można wrócić, a oferta i wykupione pozycje nie resetują się.
-- 📦 Skrzynia przyznaje monety **albo jeden przedmiot jednorazowy**, nigdy obie nagrody. Przy pełnym plecaku daje monety.
-- Generator ponownie losuje rzadki niepoprawny układ ślepych zaułków.
-- Oba skrypty gry i generatora odświeżają się przez `?v=0.4.1`.
-- Oficjalna publikacja: https://the-rozu.github.io/Karcianka/
+- **Główny link do testowania na telefonie:** https://the-rozu.github.io/Karcianka-test/
+- **Alternatywny adres tej samej gry:** https://the-rozu.github.io/Karcianka-test/dev/
+- **Archiwum eksperymentu z labiryntem:** https://the-rozu.github.io/Karcianka-test/experiment/
+- **Wersja stabilna:** https://the-rozu.github.io/Karcianka/
 
-## Kalon 0.4.0 · poprawa układu walki
+Adres główny i /dev/ są tworzone z dokładnie tego samego commita źródłowego `Karcianka/dev-mode`. Identyfikator źródłowego commita jest zapisany w `/dev-source-sha.txt`.
 
-- Zintegrowana gra w podglądzie `/dev/` nosi nazwę **Kalon** i pokazuje wersję **0.4.0** w tytule karty, lobby oraz nagłówku.
-- Lewy panel walki został powiększony w poziomym układzie ekranu. Podgląd tarczy i obrażeń jest w pełni widoczny, a przy małej wysokości można przewinąć cały panel.
-- Cache busting obejmuje zarówno `style.css?v=0.4.0`, jak i `game.js?v=0.4.0`.
-- Ten opis dotyczył wydania 0.4.0. Poprawki 0.4.1 zostały później przeniesione także do publicznej gałęzi `main`.
+## Publikacja
 
-## Aktualizacja tabeli punktacji
+Workflow [Publikacja Kalon - wersja testowa](.github/workflows/deploy.yml) uruchamia się po push na gałąź `dev-mode` w **tym repozytorium** lub ręcznie przez GitHub Actions. Pobiera bieżące źródło `The-RozU/Karcianka@dev-mode`, sprawdza spójność numeru wersji, a następnie publikuje dwa identyczne podglądy i zachowuje archiwum eksperymentu w /experiment/.
 
-- 2026-10-30: poprawiono również statyczną tabelę w index.html. Wcześniej obrażenia używały nowych mnożników, ale opis wyświetlał stare wartości. Teraz wszystkie dziewięć wierszy odpowiada regułom walki.
+Aby zmiany `Karcianka/dev-mode` same uruchamiały powyższy workflow, w **repozytorium Karcianka** należy jednorazowo ustawić sekret Actions **`KALON_TEST_SYNC_TOKEN`**. Wartością powinien być fine-grained personal access token z uprawnieniem **Contents: Read and write** wyłącznie dla repozytorium `The-RozU/Karcianka-test`. Nie należy wpisywać tokenu do żadnego pliku ani wysyłać go na czacie.
 
-## Aktualizacja balansu
+Po ustawieniu sekretu workflow `Karcianka/.github/workflows/sync-test-preview.yml` przy każdym pushu na źródłowe `dev-mode` tworzy pusty commit powiadamiający w `Karcianka-test/dev-mode`. Ten commit uruchamia aktualizację GitHub Pages. Do pełnej synchronizacji nie jest potrzebna ręczna zmiana plików, pobieranie ZIP ani modyfikowanie `main`.
 
-- 2026-10-30: mnożniki układów od Wysokiej karty ×1 do Pokera ×4,5, co 0,5 (Para i Dwie Pary ×1,5). Tabela punktacji i obrażenia korzystają z tych samych reguł.
+Jeśli token nie jest ustawiony, publikacja po zmianach w źródłowym repozytorium **nie jest automatyczna**. Można uruchomić `Publikacja Kalon - wersja testowa` ręcznie z gałęzi `dev-mode` po udostępnieniu workflow w interfejsie Actions.
 
-## Aktualizacja podglądu dev-mode
+## Test gry
 
-- 2026-10-30: sąsiednie szare pola pokazują ikonę wydarzenia, po odejściu ikonę ukrywają. Ściany pozostają ukryte do odwiedzenia pola.
-
-## Dwa osobne podglądy
-
-- Eksperyment 7×10: https://the-rozu.github.io/Karcianka-test/ (źródło: gałąź experiment/labirynt-5x8).
-- Zintegrowana główna wersja rozwojowa: https://the-rozu.github.io/Karcianka-test/dev/ (źródło: gałąź dev-mode).
-
-Workflow publikuje je jednocześnie w osobnych folderach, nie zmieniając oryginalnego publicznego adresu gry https://the-rozu.github.io/Karcianka/. Po aktualizacji dev-mode należy ponownie uruchomić workflow lub wywołać nowy push na tej gałęzi repozytorium testowego.
-
-## Uruchamianie
-
-Docelowy adres: https://the-rozu.github.io/Karcianka-test/
-
-Źródło gry: [The-RozU/Karcianka, gałąź experiment/labirynt-5x8](https://github.com/The-RozU/Karcianka/tree/experiment/labirynt-5x8).
-
-Workflow na gałęzi `dev-mode` pobiera komplet plików źródłowych (wraz z grafikami) i publikuje je przez GitHub Pages. Nie zmienia oryginalnego repozytorium.
-
-## Układ mobilny
-
-W trybie poziomym mapa zajmuje lewą część ekranu, a statystyki i opis bossa są po prawej. Plansza mieści wszystkie 7 kolumn bez przewijania w poziomie; przewijamy wyłącznie pionowo. Na większych ekranach okno mapy zajmuje więcej przestrzeni.
-
-## Rozklad pol 7×10
-
-70 pol lacznie: 1 start, 1 boss, maksymalnie 10 zwyklych przeciwnikow, 4 elity, 2 sklepy, 3 skrzynie, 2 leczenia, 3 wydarzenia i 44 puste korytarze. Kazde leczenie znajduje sie w slepym zaulku z jednym wejsciem przez zwyklego przeciwnika. Wydarzenia nie dodaja nowych walk ponad limit.
-
-## Sterowanie mapą (wersja testowa 8)
-
-- Cała szerokość 7 pól jest widoczna jednocześnie, a mapa przewija się wyłącznie pionowo.
-- Sąsiednie szare pola pokazują ikony, a po odejściu gracza pozostają widoczne bez ikon i ścian.
-- Ściany danego pola ujawniają się dopiero po wejściu na to pole.
-- Ściany nieodkrytych pomieszczeń są ukryte. Odsłaniają się przy postaci i pozostają widoczne w odwiedzonych polach.
-- Odkryte ściany są grubsze i bardziej kontrastowe.
-- Po ukończeniu walki, skrzyni, leczenia, sklepu lub wydarzenia oryginalna ikona pozostaje na zielonym polu.
-- Powrót na odwiedzone pole służy do poruszania się i nie uruchamia ponownie nagród ani sklepów.
-- Start ma przynajmniej dwie drogi wyjścia, a dodatkowe połączenia tworzą alternatywne trasy.
-- Kliknij sąsiedni, nieodkryty pokój, żeby przejść do niego z animacją.
-- Kliknij dowolny wcześniej odwiedzony pokój, aby postać wróciła po najkrótszej trasie prowadzącej wyłącznie przez odwiedzone pola.
-- Pomieszczenia mijane po drodze nie wywołują ponownie wydarzeń ani walk.
-- W podsumowaniu walki przycisk powrotu na mapę jest główny, a wyjście do lobby jest mniejsze i czerwone.
-
-## Pierwsze uruchomienie GitHub Pages
-
-1. W tym repozytorium otwórz **Settings → Pages**.
-2. W sekcji **Build and deployment → Source** wybierz **GitHub Actions**.
-3. Otwórz **Actions → Publikacja Karcianka-test → Run workflow**, wybierz gałąź `dev-mode` i uruchom.
-4. Po zakończeniu wdrożenia otwórz adres powyżej.
-
-Po zmianach w źródłowej gałęzi eksperymentalnej uruchom workflow ponownie. Zmiany w gałęzi `dev-mode` tego repozytorium uruchamiają go automatycznie. Przy kolejnej publikacji uruchom **nowy workflow** (Run workflow), zamiast używać Re-run jobs, ponieważ ponowne użycie starego uruchomienia może zdublować artefakt `github-pages`.
+- Rozgrywka PvE odbywa się w labiryncie 7 × 10.
+- Mechanika walki, wydarzenia, skrzynie, sklepy, boss i pozostałe zasoby są pobierane razem z aktualnym kodem gry.
+- Wyświetlany numer wersji jest pobierany z `index.html` gałęzi źródłowej i nie jest na sztywno wpisywany w workflow publikacji.
