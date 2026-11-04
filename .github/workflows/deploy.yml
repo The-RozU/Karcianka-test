@@ -77,10 +77,25 @@ jobs:
             -H "X-GitHub-Api-Version: 2022-11-28" \
             "https://api.github.com/repos/The-RozU/Karcianka-test/pages/deployments/0c58f58ae8598d5fc6c9b69f6cedc4e3d5c81874/cancel")"
           if [ "$STATUS" = 204 ]; then
-            echo "Zawieszone wdrozenie zostalo anulowane."
+            echo "GitHub przyjal zlecenie anulowania."
           else
             echo "::warning::Proba anulowania zawieszonego wdrozenia: HTTP $STATUS"
           fi
+          # Anulowanie jest asynchroniczne; kolejne wdrozenie nie moze ruszyc natychmiast.
+          for attempt in $(seq 1 18); do
+            STATE="$(curl -fsS -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/The-RozU/Karcianka-test/pages/deployments/0c58f58ae8598d5fc6c9b69f6cedc4e3d5c81874" \
+              | jq -r '.status // "unknown"' || echo "unknown")"
+            echo "Status starego wdrozenia: ${STATE} (sprawdzenie ${attempt}/18)"
+            case "${STATE}" in
+              canceled|cancelled|failed|failure|inactive|succeed|success)
+                sleep 5
+                break
+                ;;
+            esac
+            sleep 5
+          done
       - name: Opublikuj wersję testową
         id: deployment
         uses: actions/deploy-pages@v4
