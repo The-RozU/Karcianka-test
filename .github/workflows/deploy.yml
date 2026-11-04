@@ -8,7 +8,6 @@ on:
 permissions:
   contents: read
   pages: write
-  deployments: read
   id-token: write
 
 concurrency:
@@ -66,22 +65,6 @@ jobs:
           path: public
           # Kazda ponowiona proba musi miec wlasna nazwe artefaktu.
           name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
-      - name: Zdiagnozuj blokujace wdrozenie Pages
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          API="https://api.github.com/repos/The-RozU/Karcianka-test"
-          HEADERS=(-H "Authorization: Bearer ${GH_TOKEN}" -H "Accept: application/vnd.github+json")
-          echo "===== Status blokujacego Pages deployment ====="
-          curl -fsS "${HEADERS[@]}" "${API}/pages/deployments/0c58f58ae8598d5fc6c9b69f6cedc4e3d5c81874" || true
-          echo
-          echo "===== Zwykle deployments dla blokujacego SHA ====="
-          curl -fsS "${HEADERS[@]}" "${API}/deployments?sha=0c58f58ae8598d5fc6c9b69f6cedc4e3d5c81874&per_page=25" \
-            | jq '[.[] | {id, sha, environment, created_at, updated_at, original_environment}]' || true
-          echo "===== Ostatnie zwykle deployments ====="
-          curl -fsS "${HEADERS[@]}" "${API}/deployments?per_page=15" \
-            | jq '[.[] | {id, sha, environment, created_at, updated_at}]' || true
       - name: Opublikuj wersję testową
         id: deployment
         uses: actions/deploy-pages@v4
